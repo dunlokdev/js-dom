@@ -1,12 +1,13 @@
 function isMatchStatus(todoElement, filterStatus) {
+  if (!filterStatus) return true;
   return filterStatus === 'all' || todoElement.dataset.status === filterStatus;
 }
 
 function isMatchSearch(todoElement, searchTerm) {
-  if (searchTerm === '') return true;
-
+  if (searchTerm === '' || !searchTerm) return true;
   const titleTodo = todoElement.querySelector('.todo__title');
 
+  console.log(searchTerm);
   if (!titleTodo) return false;
 
   return titleTodo.textContent.toLowerCase().includes(searchTerm.toLowerCase());
